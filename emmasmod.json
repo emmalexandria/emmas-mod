@@ -1,0 +1,25 @@
+{
+	"id": "emmas_mod",
+	"name": "Emma's Mod",
+	"author": ["Emma Alexandria"], 
+	"description": "A collection of simple jokers and other fun things.", 
+	"prefix": "emod", 
+	"main_file": "main.lua",
+	"priority": -20,
+	"badge_colour": "d32f0e",
+	"badge_text_colour": "FFFFFF",
+	"display_name": "Emma's Mod",
+	"version": "1.0.0",
+	"dependencies": [
+		"Steamodded (>=1.*)", 
+		"Lovely (>=0.6)", 
+		"Balatro (>=1.0.1o)"
+    ],
+	"conflicts": [
+	
+	], 
+	"provides": [
+		
+	], 
+	"dump_loc": false
+}

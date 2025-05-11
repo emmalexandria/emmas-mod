@@ -5,7 +5,7 @@
 	"description": "A collection of simple jokers and other fun things.", 
 	"prefix": "emod", 
 	"main_file": "main.lua",
-	"priority": -20,
+	"priority": 0,
 	"badge_colour": "d32f0e",
 	"badge_text_colour": "FFFFFF",
 	"display_name": "Emma's Mod",

@@ -1,53 +1,40 @@
 SMODS.Joker {
-    key = 'horsejoker',
+    key="queen",
     loc_txt = {
-        name='Evil and Intimidating Horse',
-        text={
-            "Gains {X:mult,C:white} X#1#{} mult per hand played where",
-            "{C:attention}Blueprint{} and {C:attention}Brainstorm{} copy each-other",
-            "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} mult)"
+        name="Queen",
+        text = {
+            "Each non face card",
+            "drawn in initial hand",
+            "gives {C:attention}+1{} hand size"
         }
     },
-    config = { extra = {Xmult=1, Xmult_gain=0.75}},
-    rarity=2,
+    rarity=3,
     atlas="CustomJokers-emod",
     pos={x=0,y=0},
-    cost=4,
-    blueprint_compat = true,
-    loc_vars = function(self, info_queue, card)
-        return {vars = {card.ability.extra.Xmult_gain, card.ability.extra.Xmult}}
-    end,
+    cost=8,
+    blueprint_compat = false,
     calculate = function(self, card, context)
-        if context.pre_joker then 
-            local jokers = G.jokers.cards
 
-            for key,joker in ipairs(jokers) do
-                print(key)
-            end
-        end
-        if context.joker_main then 
-            return {
-                Xmult_mod = card.ability.extra.Xmult
-            }
-        end
+
     end
 }
 
 SMODS.Joker {
-    key='slot_machine',
+    key='gambler',
     loc_txt = {
-        name='Slot Machine',
+        name='Gambler',
         text={
             "Has a {C:green}#1# in #2#{} chance to",
             "give {C:money}15${} if scoring hand",
-            "contains 3 or more {C:attention}7{}s"
+            "contains 3 or more 7s"
         }
     },
     rarity=2,
-    config = {extra={odds=4}},
+    config = {extra={odds=3}},
     atlas="CustomJokers-emod",
     pos={x=1,y=0},
     cost=5,
+    blueprint_compat = true,
     loc_vars = function(self, info_queue, card)
         return {vars = {(G.GAME.probabilities.normal or 1), card.ability.extra.odds}}
     end,
@@ -100,45 +87,6 @@ SMODS.Joker {
             if context.card == card then 
                 self.config.extra.Xmult = self.config.extra.Xmult + card.ability.extra.Xmult_gain
             end
-        end
-    end,
-}
-
-SMODS.Joker {
-    name="OuroborosD",
-    key="ouroboros_d",
-    atlas="CustomJokers-emod",
-    pos={x=2,y=0},
-    rarity=1,
-    config={extra={Xmult=1, Xmult_gain= 1.5, count=1}},
-    cost=5,
-    blueprint_compat = true,
-    eternal_compat = false,
-    loc_txt = {
-        name="Ouroboros",
-        text = {
-            "Gains {X:mult,C:white}X#1#{} mult when sold.",
-            "ds to {C:chips}common{} when first sold.",
-            "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} mult)"
-        }
-
-    },
-    loc_vars = function(self, info_queue, card) 
-        return {vars = {card.ability.extra.Xmult_gain, card.ability.extra.Xmult}}
-    end,
-    set_ability = function(self, card, initial, delay_sprites) 
-        card.ability.extra.Xmult = card.ability.extra.Xmult + (card.ability.extra.Xmult_gain * card.ability.extra.count)
-    end,
-    calculate = function(self, card, context) 
-        if context.selling_card then
-            if context.card == card then 
-                self.config.extra.Xmult = self.config.extra.Xmult + card.ability.extra.Xmult_gain
-            end
-        end
-        if context.joker_main then
-            return {
-                Xmult = card.ability.extra.Xmult
-            }
         end
     end,
 }

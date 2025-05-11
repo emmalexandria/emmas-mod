@@ -72,6 +72,7 @@ SMODS.load_file('./items/jokers.lua')()
 SMODS.load_file('./items/decks.lua')()
 SMODS.load_file('./items/stakes.lua')()
 SMODS.load_file('./items/consumables.lua')()
+SMODS.load_file('./items/misc.lua')()
 
 
 if config.vanilla_reskins then 
